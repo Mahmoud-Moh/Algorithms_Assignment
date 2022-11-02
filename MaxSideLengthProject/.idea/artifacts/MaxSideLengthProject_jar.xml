@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MaxSideLengthProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MaxSideLengthProject_jar</output-path>
+    <root id="archive" name="MaxSideLengthProject.jar">
+      <element id="module-output" name="MaxSideLengthProject" />
+    </root>
+  </artifact>
+</component>
