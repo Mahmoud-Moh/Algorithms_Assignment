@@ -2,6 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.random.RandomGenerator;
 
 import static java.lang.Math.*;
 
@@ -75,10 +76,14 @@ public class MaxSideLength {
         return minInStrip(points_in_strip, sigma_min);
     }
 
-    double distance(Point p1, Point p2){
+    /*double distance(Point p1, Point p2){
         return Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) +
                 (p1.y - p2.y) * (p1.y - p2.y)
         );
+    }*/
+
+    private int distance(Point p1, Point p2) {
+        return Math.max(Math.abs(p1.x - p2.x), Math.abs(p1.y - p2.y));
     }
 
     double minInStrip(ArrayList<Point> points_in_strip, double prev_min){
@@ -97,25 +102,39 @@ public class MaxSideLength {
                         closestPair[0] = points_in_strip.get(i);
                         closestPair[1] = points_in_strip.get(i + j);
                     }
-                    d = distance(points_in_strip.get(i), points_in_strip.get(i + j));
+                    d = min(d, distance(points_in_strip.get(i), points_in_strip.get(i + j)));
                 }
             }
         }
         return d;
     }
 
-   /* public static void main(String args[]) {
-        Point p1 = new Point(2, 1);
-        Point p2 = new Point(1, 3);
-        Point p3 = new Point(3, 4);
-        Point p4 = new Point(100, 1);
-        Point p5 = new Point(1, 100);
-        Point p6 = new Point(1, 9);
-        Point p7 = new Point(6,3);
+    public static void main(String args[]) {
+        Point[] P = new Point[]{
+                new Point(66, -6),
+                new Point(34, 47),
+                new Point(11, -13),
+                new Point(-3, -90),
+                new Point(-43, 60),
+                new Point(-44, 50),
+                new Point(7, -26),
+                new Point(40, -5),
+                new Point(-64, -88),
+                new Point(-81, 78),
+                new Point(-73, -17),
+                new Point(-48, 53),
+                new Point(93, -31),
+                new Point(-21, -77),
+                new Point(80, 0),
+                new Point(8, 20),
+                new Point(71, -1),
+                new Point(94, 43),
+                new Point(-54, 16),
+                new Point(38, -76)
 
-        MaxSideLength m = new MaxSideLength(new Point[]{p1, p2, p3, p4, p5, p6, p7});
-        m.sortPoints();
+        };
+        MaxSideLength m = new MaxSideLength(P);
+        m.setPoints(P);
         System.out.println(m.calcMaxSideLength());
-       // System.out.println(m.FindMaxSideLength());
-    }*/
+    }
 }

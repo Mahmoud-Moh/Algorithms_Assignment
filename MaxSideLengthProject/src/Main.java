@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class Main {
     public static void main(String args[]){
         String ip_path = args[0];
-        ip_path = ip_path.substring(1, ip_path.length());
         System.out.println(ip_path);
         try {
             BufferedReader br = new BufferedReader(new FileReader(ip_path));
@@ -30,7 +29,9 @@ public class Main {
             String parent = theFile.getParent();
             parent += "\\output.txt";
             BufferedWriter bw = new BufferedWriter(new FileWriter(parent));
-            bw.write(Double.toString(maxSideLength.calcMaxSideLength()));
+            String answer = Double.toString(maxSideLength.calcMaxSideLength());
+            System.out.println(answer);
+            bw.write(answer);
             bw.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
